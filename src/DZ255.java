@@ -10,9 +10,8 @@ public class DZ255 {
         };
 
         try {
-            int result = processArray(array);
-            System.out.println("Сумма: " + result);
-        } catch (MyArraySizeException | MyArrayDataException e) {
+            System.out.println("Сумма: " + processArray(array));
+        } catch (Exception e) {
             System.out.println(e.getMessage());
         }
     }
@@ -20,24 +19,20 @@ public class DZ255 {
     public static int processArray(String[][] array)
             throws MyArraySizeException, MyArrayDataException {
 
-
         if (array.length != 4) {
             throw new MyArraySizeException("Массив должен быть 4x4");
         }
 
         int sum = 0;
 
-        for (int i = 0; i < array.length; i++) {
-
+        for (int i = 0; i < 4; i++) {
             if (array[i].length != 4) {
                 throw new MyArraySizeException("Массив должен быть 4x4");
             }
 
-            for (int j = 0; j < array[i].length; j++) {
-
+            for (int j = 0; j < 4; j++) {
                 try {
-                    int value = Integer.parseInt(array[i][j]);
-                    sum += value;
+                    sum += Integer.parseInt(array[i][j]);
                 } catch (NumberFormatException e) {
                     throw new MyArrayDataException(
                             "Ошибка в ячейке [" + i + "][" + j + "]"
